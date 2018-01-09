@@ -1,7 +1,7 @@
 create or replace trigger state_change
 group default_triggers
 priority 1
-comment 'State changes rahul processing for ALERTS.STATUS'
+comment 'State changess rahul processing for ALERTS.STATUS'
 before update on alerts.status
 for each row
 begin
