@@ -6,6 +6,7 @@ before update on alerts.status
 for each row 
 begin
         set new.StateChange = getdate();
+--comment rahul joy
 end;
 go
 
