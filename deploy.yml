@@ -3,6 +3,7 @@
   tags:
     - triggers
   hosts: 169.254.20.158
+  any_errors_fatal: true
   remote_user: root
   become: yes
   roles:

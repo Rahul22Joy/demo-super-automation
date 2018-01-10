@@ -7,7 +7,7 @@
 - name: Granting permission to execute the triggers
   command: chmod 777 /home/rahul/triggers.sh
 
-- name: Deploying object server triggers
-  command: /home/rahul/triggers.sh
-
-
+- name: Deploying the object server triggers
+  command: /opt/IBM/tivoli/netcool/omnibus/bin/nco_sql -server SUPER_OBJ -username root -password '' -i /opt/IBM/tivoli/netcool/omnibus/tmp/super.sql
+  register: command_result
+  failed_when: "'ERROR' in command_result.stdout"
