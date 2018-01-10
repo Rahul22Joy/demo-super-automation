@@ -6,7 +6,7 @@ before update on alerts.status
 for each row 
 begin
         set new.StateChange = getdate();
---comment rahul joy 123
+--comment rahul joy 1234
 end;
 go
 
