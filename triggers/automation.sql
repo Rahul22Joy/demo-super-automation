@@ -60,7 +60,7 @@ go
 create or replace trigger system_watch_startup
 group system_watch
 priority 1
-comment 'Create an alert indicating that the ObjectServer has started'
+comment 'Creates an alert indicating that the ObjectServer has started'
 on signal startup
 begin
 	insert into alerts.status (Identifier, Summary, Node, Manager, Type, Severity, FirstOccurrence, LastOccurrence, AlertGroup, OwnerUID) values ('Startup@'+%signal.node, 'ObjectServer '+%signal.server+' on '+%signal.node+' started at '+to_char(%signal.at), %signal.node, 'SystemWatch', 2, 5, %signal.at, %signal.at, 'nco_objserv', 65534);
