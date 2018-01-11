@@ -1,9 +1,9 @@
 - name: copying the files to object servers
   copy: src={{ item.src}} dest={{ item.dest}}
   with_items:
-    - { src: 'triggers/automation.sql', dest: '/opt/IBM/tivoli/netcool/omnibus/etc/automation.sql' }
+    - { src: 'triggers/automation.sql', dest: '/opt/IBM/tivoli/netcool/omnibus/tmp/automation.sql' }
 
 - name: Deploying the object server triggers
-  command: /opt/IBM/tivoli/netcool/omnibus/bin/nco_sql -server SUPER_OBJ -username root -password '' -i /opt/IBM/tivoli/netcool/omnibus/etc/automation.sql
+  command: /opt/IBM/tivoli/netcool/omnibus/bin/nco_sql -server SUPER_OBJ -username root -password '' -i /opt/IBM/tivoli/netcool/omnibus/tmp/automation.sql
   register: command_result
   failed_when: "'ERROR' in command_result.stdout"
