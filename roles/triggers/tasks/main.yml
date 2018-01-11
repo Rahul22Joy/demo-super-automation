@@ -1,13 +1,9 @@
 - name: copying the files to object servers
   copy: src={{ item.src}} dest={{ item.dest}}
   with_items:
-    - { src: 'scripts/triggers.sh', dest: '/home/rahul/triggers.sh' }
-    - { src: 'triggers/super.sql', dest: '/opt/IBM/tivoli/netcool/omnibus/tmp' }
-
-- name: Granting permission to execute the triggers
-  command: chmod 777 /home/rahul/triggers.sh
+    - { src: 'triggers/automation.sql', dest: '/opt/IBM/tivoli/netcool/omnibus/etc/automation.sql' }
 
 - name: Deploying the object server triggers
-  command: /opt/IBM/tivoli/netcool/omnibus/bin/nco_sql -server SUPER_OBJ -username root -password '' -i /opt/IBM/tivoli/netcool/omnibus/tmp/super.sql
+  command: /opt/IBM/tivoli/netcool/omnibus/bin/nco_sql -server SUPER_OBJ -username root -password '' -i /opt/IBM/tivoli/netcool/omnibus/etc/automation.sql
   register: command_result
   failed_when: "'ERROR' in command_result.stdout"
